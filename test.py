@@ -27,7 +27,7 @@ def comparer_deux_images(img1, img2):
         return True
 def prise_sequence_video(camera):
     t = time.localtime()
-    nom_fichier = str(t[0]) + "-" + str(t[1]) + "-" + str(t[2]) + "_" +str(t[3]) + "h" + str(t[4]) + "min" + str(t[5] + "sec.h264")
+    nom_fichier = str(t[0]) + "-" + str(t[1]) + "-" + str(t[2]) + "_" +str(t[3]) + "h" + str(t[4]) + "min" + str(t[5]) + "sec"
     print('enregistrement : debut')
     camera.start_recording("videos/" + nom_fichier + ".h264")
     camera.wait_recording(5)
@@ -36,11 +36,12 @@ def prise_sequence_video(camera):
 def main():
 # vérification de l'existence d'un repertoire "videos" et création de ce dernier le cas échéant:
     t = time.localtime()
-    heure_demarrage = str(t[0]) + "-" + str(t[1]) + "-" + str(t[2]) + "_" +str(t[3]) + "h" + str(t[4]) + "min" + str(t[5] + "sec")
+    heure_demarrage = str(t[0]) + "-" + str(t[1]) + "-" + str(t[2]) + "_" +str(t[3]) + "h" + str(t[4]) + "min" + str(t[5]) + "sec"
     if not os.path.exists("videos"):
         os.makedirs("videos")
     with picamera.PiCamera() as c:
-        c.start_preview()
+       # c.start_preview()
+       # time.sleep(3)
         image_precedente, image_actuelle = None, None
         try: 
             while True:
